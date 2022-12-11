@@ -1,7 +1,6 @@
 import logging
 import csv
 
-import aiogram.types.document
 from aiogram import *  # Bot, Dispatcher, executor, types
 
 API_TOKEN = '5818911256:AAGuz_QL2ILR5iMcWRT7cls3M0m4irwe1Wo'
@@ -30,20 +29,7 @@ async def echo(message: types.Message):
 @dp.message_handler(content_types=['document'])
 async def echo(message: types.Message):
     if message.document.mime_type == CSV_MIME_TYPE:
-        print(message.document.file_id, message.document.file_name)
-        src = 'documents/' + message.document.file_name
-        print(bot.get_file(message.document.file_id))
-        # with open(src) as csv_file:
-        #     csv_reader = csv.reader(src, delimiter=',')
-        #     line_count = 0
-        #     for row in csv_reader:
-        #         if line_count == 0:
-        #             print(f'Column names are {", ".join(row)}')
-        #             line_count += 1
-        #         else:
-        #             print(f'\t{row[0]} works in the {row[1]} department, and was born in {row[2]}.')
-        #             line_count += 1
-        #     print(f'Processed {line_count} lines.')
+        # todo
         await message.answer(message.document.mime_type)
     else:
         await message.answer('Expected .CSV file format, try again')
