@@ -1,4 +1,4 @@
-import db_config as db
+import db.db_config as db
 
 from psycopg2.pool import SimpleConnectionPool
 from contextlib import contextmanager

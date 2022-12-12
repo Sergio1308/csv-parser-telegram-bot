@@ -3,8 +3,9 @@ import csv
 import requests
 import json
 import db.database as db
-from aiogram import *
 import config
+
+from aiogram import *
 
 logging.basicConfig(level=logging.INFO)
 bot = Bot(token=config.API_TOKEN)
