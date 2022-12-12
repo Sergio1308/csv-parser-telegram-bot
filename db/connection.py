@@ -1,9 +1,9 @@
-import db.db_config as db
-
 from psycopg2.pool import SimpleConnectionPool
 from contextlib import contextmanager
+from env_loading import load_env_variable
 
-pool = SimpleConnectionPool(minconn=1, maxconn=10, dsn=db.DATABASE_URI)
+DATABASE_URI_KEY = load_env_variable("DATABASE_URI_KEY")
+pool = SimpleConnectionPool(minconn=1, maxconn=10, dsn=DATABASE_URI_KEY)
 
 
 @contextmanager

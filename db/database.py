@@ -40,6 +40,31 @@ def add_new_columns(table_names, fields):
                 cursor.execute(INSERT_QUERY, (str(f_name),))
 
 
+def set_foreign_keys(table_names):
+    print(table_names[1:])
+    for index, name in reversed(list(enumerate(table_names[1:]))):
+        # print(name, table_names[len(table_names)-index-1])
+        print(name, )
+        QUERY = """
+            ALTER TABLE {} ADD CONSTRAINT id FOREIGN KEY (id) REFERENCES {} (id);
+        """
+
+
+if __name__ == '__main__':
+    set_foreign_keys(['name1', 'name2', 'name3'])
+
+
+def getData():
+    SELECT_QUERY = """SELECT * FROM startdate LIMIT 100"""
+    with get_connection() as connection:
+        with get_cursor(connection) as cursor:
+            cursor.execute(SELECT_QUERY)
+            records = cursor.fetchall()
+            for row in records:
+                print("Id = ", row[0], )
+                print("Value = ", row[1])
+
+
 @contextmanager
 def get_cursor(connection):
     with connection:
